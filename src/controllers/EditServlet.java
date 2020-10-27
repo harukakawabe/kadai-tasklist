@@ -46,6 +46,11 @@ public class EditServlet extends HttpServlet {
         request.setAttribute("task", t);
         request.setAttribute("_token", request.getSession().getId());
 
+        //タスクデータが存在している場合のみタスクIDをセッションスコープに登録
+        if(t!=null){
+            request.getSession().setAttribute("task_id",t.getId());
+        }
+
         // タスクIDをセッションスコープに登録
         request.getSession().setAttribute("task_id", t.getId());
 
